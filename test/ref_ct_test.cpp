@@ -8,7 +8,6 @@
 
 #include <boost/ref.hpp>
 #include <boost/core/is_same.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/config/workaround.hpp>
 
 namespace {
@@ -17,8 +16,8 @@ template< typename T, typename U >
 void ref_test(boost::reference_wrapper<U>)
 {
     typedef typename boost::reference_wrapper<U>::type type;
-    BOOST_STATIC_ASSERT((boost::core::is_same<U,type>::value));
-    BOOST_STATIC_ASSERT((boost::core::is_same<T,type>::value));
+    static_assert(boost::core::is_same<U,type>::value);
+    static_assert(boost::core::is_same<T,type>::value);
 }
 
 template< typename T >
@@ -30,20 +29,20 @@ void assignable_test(T x)
 template< bool R, typename T >
 void is_reference_wrapper_test(T)
 {
-    BOOST_STATIC_ASSERT(boost::is_reference_wrapper<T>::value == R);
+    static_assert(boost::is_reference_wrapper<T>::value == R);
 }
 
 template< typename R, typename Ref >
 void cxx_reference_test(Ref)
 {
-    BOOST_STATIC_ASSERT((boost::core::is_same<R,Ref>::value));
+    static_assert(boost::core::is_same<R,Ref>::value);
 }
 
 template< typename R, typename Ref >
 void unwrap_reference_test(Ref)
 {
     typedef typename boost::unwrap_reference<Ref>::type type;
-    BOOST_STATIC_ASSERT((boost::core::is_same<R,type>::value));
+    static_assert(boost::core::is_same<R,type>::value);
 }
 
 } // namespace

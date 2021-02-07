@@ -7,7 +7,6 @@ Distributed under the Boost Software License, Version 1.0.
 */
 
 #include <boost/core/addressof.hpp>
-#include <boost/static_assert.hpp>
 
 #if !defined(BOOST_CORE_NO_CONSTEXPR_ADDRESSOF)
 struct Type { };
@@ -15,6 +14,6 @@ struct Type { };
 static int v1 = 0;
 static Type v2 = { };
 
-BOOST_STATIC_ASSERT(boost::addressof(v1) == &v1);
-BOOST_STATIC_ASSERT(boost::addressof(v2) == &v2);
+static_assert(boost::addressof(v1) == &v1);
+static_assert(boost::addressof(v2) == &v2);
 #endif
