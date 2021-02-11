@@ -13,32 +13,9 @@ import testing ;
 run quick.cpp ;
 
 # full test suite
-run addressof_test.cpp ;
-run addressof_test2.cpp ;
-run addressof_np_test.cpp ;
-run addressof_fn_test.cpp ;
-compile addressof_constexpr_test.cpp ;
-compile-fail addressof_fail_rvalue.cpp ;
-
 run checked_delete_test.cpp ;
 compile-fail checked_delete_fail.cpp ;
 compile-fail checked_delete_fail2.cpp ;
-
-compile ref_ct_test.cpp ;
-run ref_test.cpp ;
-run ref_ref_test.cpp ;
-run ref_fn_test.cpp ;
-compile-fail ref_rv_fail1.cpp ;
-compile-fail ref_rv_fail2.cpp ;
-compile-fail ref_rv_fail3.cpp ;
-compile-fail ref_rv_fail4.cpp ;
-compile-fail ref_rv_fail5.cpp ;
-compile-fail ref_implicit_fail.cpp ;
-compile-fail ref_implicit_fail2.cpp ;
-compile-fail ref_implicit_fail3.cpp ;
-compile-fail ref_implicit_fail4.cpp ;
-run ref_cv_test.cpp ;
-run ref_conversion_test.cpp ;
 
 run eif_constructors.cpp ;
 run eif_dummy_arg_disambiguation.cpp ;
@@ -132,13 +109,8 @@ run lightweight_test_with_test.cpp
   : : : $(pedantic-errors) ;
 run-fail lightweight_test_with_fail.cpp ;
 
-run is_same_test.cpp ;
-
 run typeinfo_test.cpp ;
 run typeinfo_test.cpp : : : <rtti>off : typeinfo_test_no_rtti ;
-
-run iterator_test.cpp ;
-run detail_iterator_test.cpp ;
 
 run demangle_test.cpp
   : : : <test-info>always_show_run_output ;
@@ -148,21 +120,12 @@ run demangled_name_test.cpp
 
 run demangled_name_test.cpp  : : : <rtti>off <test-info>always_show_run_output : demangled_name_test_no_rtti ;
 
-run scoped_enum.cpp ;
-compile-fail scoped_enum_compile_fail_conv_from_int.cpp ;
-compile-fail scoped_enum_compile_fail_conv_to_int.cpp ;
-
-run underlying_type.cpp ;
-
 run pointer_traits_pointer_test.cpp ;
 run pointer_traits_element_type_test.cpp ;
 run pointer_traits_difference_type_test.cpp ;
 run pointer_traits_rebind_test.cpp ;
 run pointer_traits_pointer_to_test.cpp ;
 run to_address_test.cpp ;
-
-run exchange_test.cpp ;
-run exchange_move_test.cpp ;
 
 run first_scalar_test.cpp ;
 compile first_scalar_constexpr_test.cpp ;
@@ -220,11 +183,6 @@ run test_lib_typeid2.cpp lib_typeid : : : <link>static : test_lib_typeid2_static
 
 run test_lib_typeid2.cpp lib_typeid : : : <link>shared <rtti>off : test_lib_typeid2_shared_no_rtti ;
 run test_lib_typeid2.cpp lib_typeid : : : <link>static <rtti>off : test_lib_typeid2_static_no_rtti ;
-
-run uncaught_exceptions.cpp
-  : : : <exception-handling>on ;
-run uncaught_exceptions_np.cpp
-  : : : <exception-handling>on ;
 
 run no_exceptions_support_test.cpp ;
 run no_exceptions_support_test.cpp : : : <exception-handling>off : no_exceptions_support_test_nx ;
